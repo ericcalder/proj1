@@ -1,1 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LogIn</title>
+</head>
+<body>
+
+</body>
+</html>
+<body>
 <h3>login page</h3>
+	<img src='/images/capital.jpg' height="100" width="191">
+   	<img src='/images/tenement2.jpg'  height="100" width="191">
+
+		<div class="login-form">
+			<h1>Login Form</h1>
+			<form  method="POST">
+				<input type="text" name="email" placeholder="UserEmail" required>
+				<input type="password" name="password" placeholder="Password" required>
+				<input type="submit">
+			</form>
+		<% if(locals.message){%>
+			<p><%=locals.message %></p>
+			<% } %>
+		</div>
+		
+	</body>
+</html>
