@@ -116,7 +116,7 @@ res.render('login');
 });
 
 app.post('/', hashpw, logIn,  function(req, res){
-	console.log('in post')
+	console.log('in post  '+port)
 	if(req.session.loggedin){
 		res.render('index',{user:req.session.email})
 	}
