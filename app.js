@@ -52,7 +52,7 @@ app.use(session({
     key: 'user_sid',
     secret: 'somerandonstuffs',
     store: sessionStore,
-    resave: false,
+    resave: true,
     saveUninitialized: false,
     //cookie: {
       //  expires: 600000
