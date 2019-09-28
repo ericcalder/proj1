@@ -52,7 +52,7 @@ app.use(session({
     key: 'user_sid',
     secret: 'somerandonstuffs',
     store: sessionStore,
-    resave: true,
+    resave: false,
     saveUninitialized: false,
     //cookie: {
       //  expires: 600000
@@ -120,7 +120,7 @@ app.post('/', hashpw, logIn,  function(req, res){
 	if(req.session.loggedin){
 		res.render('index',{user:req.session.email})
 	}
-	
+	else {res.send('not logged in')}
 	//res.send('logged in')
 })
 
