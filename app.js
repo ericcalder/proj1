@@ -28,7 +28,7 @@ var connection = mysql.createConnection({
 
 var app = express();
 app.set('view engine', 'ejs');
-//app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -114,7 +114,7 @@ app.get('/', function(req,res){
 	console.log('in root');
 res.render('login');
 });
-/*
+
 app.post('/', hashpw, logIn,  function(req, res){
 	console.log('in post  '+port)
 	if(req.session.loggedin){
@@ -123,6 +123,6 @@ app.post('/', hashpw, logIn,  function(req, res){
 	else {res.send('not logged in')}
 	//res.send('logged in')
 })
-*/
+
 
 app.listen(port);
