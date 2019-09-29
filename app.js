@@ -54,9 +54,9 @@ app.use(session({
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-    //cookie: {
-      //  expires: 600000
-    //}
+    cookie: {
+        expires: 600
+    }
 }));
 
 ////// custom middleware //////////
