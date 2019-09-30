@@ -114,6 +114,7 @@ app.get('/', function(req,res){
 	console.log('in root');
 	if(req.headers.cookie){
 	console.log('req.header  :'+JSON.stringify(req.headers.cookie));
+	res.clearCookie("user_sid");
 	}
 res.render('login');
 });
