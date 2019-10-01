@@ -112,10 +112,7 @@ const isLoggedIn=(req, res, next)=>{
 
 app.get('/', function(req,res){
 	console.log('in root');
-	if(req.headers.cookie){
-	console.log('req.header  :'+JSON.stringify(req.headers.cookie));
-	res.clearCookie("user_sid");
-	}
+	
 res.render('login');
 });
 
@@ -127,6 +124,13 @@ app.post('/', hashpw, logIn,  function(req, res){
 	else {res.send('not logged in')}
 	//res.send('logged in')
 })
+
+app.get('/logout', function (req, res, next) {
+		console.log('in logout')
+		delete req.session.loggedin;
+		console.log('req.session===='+req.session.loggedin)
+		res.redirect('/');
+	});
 
 
 app.listen(port);

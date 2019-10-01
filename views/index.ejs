@@ -1,1 +1,51 @@
-<h2>Index</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    
+
+    <% include ../views/partials/head %>
+    <link rel='stylesheet' href='/stylesheets/edit.css' />
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+    #map{
+      height:400px;
+      width:100%;
+    }
+  </style>
+
+    
+  </head>
+  <header>
+    <% include ../views/partials/header %>
+  </header>
+  
+<body>
+    <h1>Welcome</h1>
+   <img src='/images/capital.jpg' height="100" width="191">
+   <img src='/images/tenement2.jpg'  height="100" width="191">
+  
+ 
+
+  <h4>Week Ending: </h4>
+  <h5></h5>
+  <h3 id='count'></h4>
+  
+  
+  <div class='container'>
+    <table class='table'></table>
+  <button id='show' onclick='showStairs()'>show Stairs</button>
+    <button hidden id='download' onclick='doCsv()'>download</button>
+  </div>
+	 
+   
+   
+   
+
+
+ 
+</body>
+
+
+</html>
