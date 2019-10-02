@@ -27,6 +27,12 @@ var connection = mysql.createConnection({
 }
 
 var app = express();
+
+var index = require('./routes/index');
+//var edit = require('./routes/edit');
+//var map = require('./routes/map');
+var cleaners = require('./routes/cleaners');
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
@@ -53,10 +59,10 @@ app.use(session({
     secret: 'somerandonstuffs',
     store: sessionStore,
     resave: false,
-    saveUninitialized: false,
-    cookie: {
-        expires: 600
-    }
+    saveUninitialized: false
+    //cookie: {
+ //       expires: 600
+    //}
 }));
 
 ////// custom middleware //////////
@@ -87,7 +93,7 @@ const logIn=(req,res, next)=>{
 					req.session.loggedin = true;
 					req.session.authenticated = true;
 					req.session.email = email;
-					console.log('results='+results)
+					console.log('results='+JSON.stringify(results))
 		next();
 		}
 		 else {
@@ -118,6 +124,7 @@ res.render('login');
 
 app.post('/', hashpw, logIn,  function(req, res){
 	console.log('in post  '+port)
+	console.log('req.session===='+req.session.loggedin)
 	if(req.session.loggedin){
 		res.render('index',{user:req.session.email})
 	}
@@ -132,5 +139,10 @@ app.get('/logout', function (req, res, next) {
 		res.redirect('/');
 	});
 
+app.use('/index',isLoggedIn, index);
+
+//app.use('/edit', isLoggedIn, edit);
+//app.use('/map', isLoggedIn, map);
+app.use('/cleaners', isLoggedIn, cleaners);
 
 app.listen(port);
