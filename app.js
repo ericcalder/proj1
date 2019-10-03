@@ -139,10 +139,10 @@ app.get('/logout', function (req, res, next) {
 		res.redirect('/');
 	});
 
-app.use('/index',isLoggedIn, index);
+//app.use('/index',isLoggedIn, index);
 
 //app.use('/edit', isLoggedIn, edit);
 //app.use('/map', isLoggedIn, map);
-app.use('/cleaners', isLoggedIn, cleaners);
+//app.use('/cleaners', isLoggedIn, cleaners);
 
 app.listen(port);
