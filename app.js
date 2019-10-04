@@ -22,7 +22,7 @@ var connection = mysql.createConnection({
         user     : 'stairadmin',
       password: process.env.MYSQL_PW,
       database: 'stairadmin',
-      timezone: 'utc'
+      //timezone: 'utc'
     });
 }
 
@@ -136,7 +136,8 @@ app.get('/logout', function (req, res, next) {
 		console.log('in logout')
 		delete req.session.loggedin;
 		console.log('req.session===='+req.session.loggedin)
-		res.redirect('/');
+		//res.redirect('/');
+		res.render('login');
 	});
 
 //app.use('/index',isLoggedIn, index);
