@@ -137,7 +137,8 @@ app.get('/logout', function (req, res, next) {
 		delete req.session.loggedin;
 		console.log('req.session===='+req.session.loggedin)
 		//res.redirect('/');
-		res.render('login');
+		//res.render('login');
+		res.end('logged out')
 	});
 
 //app.use('/index',isLoggedIn, index);
