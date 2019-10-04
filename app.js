@@ -28,10 +28,10 @@ var connection = mysql.createConnection({
 
 var app = express();
 
-var index = require('./routes/index');
+//var index = require('./routes/index');
 //var edit = require('./routes/edit');
 //var map = require('./routes/map');
-var cleaners = require('./routes/cleaners');
+//var cleaners = require('./routes/cleaners');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended : true}));
