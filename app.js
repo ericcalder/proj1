@@ -133,12 +133,12 @@ app.post('/', hashpw, logIn,  function(req, res){
 })
 
 app.get('/logout', function (req, res, next) {
-		console.log('in logout')
+		//console.log('in logout')
 		//delete req.session.loggedin;
 		//console.log('req.session===='+req.session.loggedin)
 		//res.redirect('/');
 		//res.render('login');
-		res.end('logged out')
+		res.send('logged out')
 	});
 
 //app.use('/index',isLoggedIn, index);
