@@ -140,7 +140,7 @@ app.get('/logout', function (req, res) {
 //		console.log('cleared cookie:'+JSON.stringify(req.cookies))
 		delete req.session.loggedin;
 		delete req.cookies;
-		res.clearCookie("user_sid","",{ domain: 'https://enigmatic-garden-66044.herokuapp.com'})
+		res.cookie("user_sid","",{ domain: 'https://enigmatic-garden-66044.herokuapp.com'})
 //		console.log('req.session===='+req.session.loggedin)
 		res.redirect('/');
 		
