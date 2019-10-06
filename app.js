@@ -136,7 +136,7 @@ app.post('/', hashpw, logIn,  function(req, res){
 
 app.get('/logout', function (req, res) {
 		console.log('in logout '+JSON.stringify(req.cookies))
-		res.clearCookie("user_sid","",{ path: '/' });
+		res.clearCookie("user_sid","",{ expires: new Date() });
 		console.log('cleared cookie:'+JSON.stringify(req.cookies))
 		delete req.session.loggedin;
 		console.log('req.session===='+req.session.loggedin)
