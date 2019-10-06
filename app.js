@@ -147,6 +147,7 @@ app.get('/logout', function (req, res) {
 app.get('/logout', function(req,res){
  //req.logOut();
  req.session.destroy(function (err) {
+ 		res.clearCookie('user_sid')
         res.redirect('/'); //Inside a callback… bulletproof!
     });
 });
