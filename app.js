@@ -133,7 +133,7 @@ app.post('/', hashpw, logIn,  function(req, res){
 	else {res.send('not logged in')}
 	//res.send('logged in')
 })
-
+/*
 app.get('/logout', function (req, res) {
 		console.log('in logout '+JSON.stringify(req.cookies))
 		res.clearCookie("user_sid","",{ expires: new Date() });
@@ -143,6 +143,13 @@ app.get('/logout', function (req, res) {
 		res.redirect('/');
 		
 	});
+*/
+app.get('/logout', function(req,res){
+ //req.logOut();
+ req.session.destroy(function (err) {
+        res.redirect('/'); //Inside a callback… bulletproof!
+    });
+});
 
 //app.use('/index',isLoggedIn, index);
 
