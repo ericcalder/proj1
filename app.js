@@ -139,6 +139,7 @@ app.get('/logout', function (req, res) {
 //		res.clearCookie("user_sid","",{ expires: new Date() });
 //		console.log('cleared cookie:'+JSON.stringify(req.cookies))
 		delete req.session.loggedin;
+		delete req.cookies;
 		res.clearCookie("user_sid","")
 //		console.log('req.session===='+req.session.loggedin)
 		res.redirect('/');
