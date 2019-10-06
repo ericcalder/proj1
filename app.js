@@ -1,6 +1,7 @@
 require('dotenv').config()
 var express=require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var path = require('path');
 var fs = require('fs');
 const mysql=require('mysql');
@@ -36,6 +37,7 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -134,6 +136,7 @@ app.post('/', hashpw, logIn,  function(req, res){
 
 app.get('/logout', function (req, res) {
 		console.log('in logout')
+		res.clearCookie("user_sid");
 		delete req.session.loggedin;
 		console.log('req.session===='+req.session.loggedin)
 		res.redirect('/');
