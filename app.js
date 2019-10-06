@@ -132,7 +132,7 @@ app.post('/', hashpw, logIn,  function(req, res){
 	//res.send('logged in')
 })
 
-app.get('/logout', function (req, res, next) {
+app.get('/logout', function (req, res) {
 		console.log('in logout')
 		delete req.session.loggedin;
 		console.log('req.session===='+req.session.loggedin)
