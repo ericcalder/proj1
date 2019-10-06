@@ -133,17 +133,17 @@ app.post('/', hashpw, logIn,  function(req, res){
 	else {res.send('not logged in')}
 	//res.send('logged in')
 })
-/*
+
 app.get('/logout', function (req, res) {
-		console.log('in logout '+JSON.stringify(req.cookies))
-		res.clearCookie("user_sid","",{ expires: new Date() });
-		console.log('cleared cookie:'+JSON.stringify(req.cookies))
-		delete req.session.loggedin;
-		console.log('req.session===='+req.session.loggedin)
+//		console.log('in logout '+JSON.stringify(req.cookies))
+//		res.clearCookie("user_sid","",{ expires: new Date() });
+//		console.log('cleared cookie:'+JSON.stringify(req.cookies))
+//		delete req.session.loggedin;
+//		console.log('req.session===='+req.session.loggedin)
 		res.redirect('/');
 		
 	});
-*/
+/*
 app.get('/logout', function(req,res){
  //req.logOut();
  req.session.destroy(function (err) {
@@ -151,7 +151,7 @@ app.get('/logout', function(req,res){
         res.redirect('/'); //Inside a callback… bulletproof!
     });
 });
-
+*/
 //app.use('/index',isLoggedIn, index);
 
 //app.use('/edit', isLoggedIn, edit);
