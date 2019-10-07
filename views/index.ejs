@@ -49,3 +49,116 @@
 
 
 </html>
+<script>
+
+  function doCsv(){
+    console.log('in doCsv()   ')
+    var rows = document.querySelectorAll('.container table tr');
+    // Construct csv
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            // Clean innertext to remove multiple spaces and jumpline (break csv)
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            // Escape double-quote with double-double-quote (see https://stackoverflow.com/questions/17808511/properly-escape-a-double-quote-in-csv)
+            data = data.replace(/"/g, '""');
+            // Push escaped string
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(','));
+    }
+    var csv_string = csv.join('\n');
+    console.log('csv_string==='+csv_string)
+
+    var data='hello world'
+    var data=[['hello','world', 21.6]+'\n'+['hi','world', 2.21]]
+    var myLink=document.createElement('a');
+    myLink.download='csvfile.csv';
+    myLink.href="data:application/csv,"+ csv_string ;//escape(data);
+   myLink.click();
+  }
+
+  function showStairs(){
+    console.log('in show')
+    var freq=['weekly', 'A_week', 'B_week', '_3weekly','_4weekly','Monthly'];
+    $.get('index/show',function(data){
+      console.log('get stairs')
+      $('.container table').append('<thead><th>Stair</th>'+
+        '<th>Frequency</th>'+
+        '<th>Next Clean</th>'+
+        '<th>Cleaner</th></thead><tbody>')
+      for(k=0;k<data.length;k++){
+      $('.container table').append('<tr>'+
+        '<td>'+data[k].stair+'</td>'+
+        '<td>'+freq[data[k].freq]+'</td>'+
+        '<td>'+data[k].date+'</td>'+
+        '<td>'+data[k].cleaner+'</td>'+
+        '</tr>')
+      }
+      $('.container table').append('</tbody>')
+      $('.container button#download').show()
+      $('.container button#show').hide()
+      $('body h3#count').append('Stair count: '+data.length)
+    })
+  }
+  ///////////////////////////////
+  Date.prototype.toShortFormat = function() {
+
+    var month_names =["Jan","Feb","Mar",
+                      "Apr","May","Jun",
+                      "Jul","Aug","Sep",
+                      "Oct","Nov","Dec"];
+    
+    var day = this.getDate();
+    var month_index = this.getMonth();
+    var year = this.getFullYear();
+    
+    return "" + day + " " + month_names[month_index] + " " + year;
+}
+   Date.prototype.toMySqlFormat = function() {
+    var month_names =["01","02","03",
+                      "04","05","06",
+                      "07","08","09",
+                      "10","11","12"];
+    var day = this.getDate();
+    var month_index = this.getMonth();
+    var year = this.getFullYear();
+    
+    return "" + year + "-" + month_names[month_index] + "-" + day;
+}
+
+Date.prototype.getWeek = function() {
+  var sixjan = new Date(this.getFullYear(),0,6);
+  return Math.ceil((((this - sixjan) / 86400000) + sixjan.getDay()+1)/7);
+}
+
+
+  /////////////////////////
+  var week=1;
+
+  var today = new Date();
+  var end_of_week=new Date();
+  end_of_week.setDate(end_of_week.getDate() + 7-today.getDay());
+  //end_of_week=end_of_week.toMySqlFormat();
+  //console.log('end_of_week+++'+end_of_week.toMySqlFormat())
+  //$('body p').append(end_of_week)
+  $('body h4').append(end_of_week.toShortFormat())
+  if(end_of_week.getWeek()%2==0){
+    $('body h5').append('   A_week')  
+  }
+  else {$('body h5').append('   B_week')}
+  //$('body h4').append(end_of_week.getWeek())
+  $('body select').on('change',function(){
+    console.log('in select option')
+    var week_=$(this).val()
+    var week__=$('body select option:selected').text()
+    console.log('value=='+$(this).val())
+    console.log('text=='+week__)
+
+    var link='<a href="/index/export/?week='+week_+'&weekEnd='
+    +end_of_week.toMySqlFormat()+'">'+week__+'</a>'
+  $('body p').append(link)
+  })
+
+</script>
