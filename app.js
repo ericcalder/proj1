@@ -29,10 +29,10 @@ var connection = mysql.createConnection({
 
 var app = express();
 
-//var index = require('./routes/index');
+var index = require('./routes/index');
 //var edit = require('./routes/edit');
 //var map = require('./routes/map');
-//var cleaners = require('./routes/cleaners');
+var cleaners = require('./routes/cleaners');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended : true}));
@@ -62,13 +62,11 @@ app.use(session({
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-    //cookie: {
- //       expires: 600
-    //}
+    
     cookie: {
         path: "/",
         secure: true,
-        //httpOnly: true
+        httpOnly: true
     }
 }));
 
@@ -140,29 +138,17 @@ app.post('/', hashpw, logIn,  function(req, res){
 })
 
 app.get('/logout', function (req, res) {
-//		console.log('in logout '+JSON.stringify(req.cookies))
-//		res.clearCookie("user_sid","",{ expires: new Date() });
-//		console.log('cleared cookie:'+JSON.stringify(req.cookies))
+//		
 		delete req.session.loggedin;
-		//res.cookie("user_sid","",{ domain: 'localhost'})
-		//res.cookie("user_sid","",{ domain: 'https://enigmatic-garden-66044.herokuapp.com'})
-//		console.log('req.session===='+req.session.loggedin)
+		
 		res.redirect('/');
 		
 	});
-/*
-app.get('/logout', function(req,res){
- //req.logOut();
- req.session.destroy(function (err) {
- 		res.clearCookie('user_sid')
-        res.redirect('/'); //Inside a callback… bulletproof!
-    });
-});
-*/
-//app.use('/index',isLoggedIn, index);
+
+app.use('/index',isLoggedIn, index);
 
 //app.use('/edit', isLoggedIn, edit);
 //app.use('/map', isLoggedIn, map);
-//app.use('/cleaners', isLoggedIn, cleaners);
+app.use('/cleaners', isLoggedIn, cleaners);
 
 app.listen(port);
