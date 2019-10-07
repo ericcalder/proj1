@@ -67,8 +67,8 @@ app.use(session({
     //}
     cookie: {
         path: "/",
-        //secure: true,
-        httpOnly: true
+        secure: true,
+        //httpOnly: true
     }
 }));
 
