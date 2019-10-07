@@ -138,7 +138,7 @@ app.post('/', hashpw, logIn,  function(req, res){
 })
 
 app.get('/logout', function (req, res) {
-//		
+		console.log('in logout ->> req.session.loggedin='+req.session.loggedin)
 		delete req.session.loggedin;
 		
 		res.redirect('/');
