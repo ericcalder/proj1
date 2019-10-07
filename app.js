@@ -61,10 +61,16 @@ app.use(session({
     secret: 'somerandonstuffs',
     store: sessionStore,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
     //cookie: {
  //       expires: 600
     //}
+    cookie: {
+        path: "/",
+        secure: true,
+        //domain: ".herokuapp.com", REMOVE THIS HELPED ME (I dont use a domain anymore)
+        httpOnly: true
+    }
 }));
 
 ////// custom middleware //////////
@@ -139,8 +145,8 @@ app.get('/logout', function (req, res) {
 //		res.clearCookie("user_sid","",{ expires: new Date() });
 //		console.log('cleared cookie:'+JSON.stringify(req.cookies))
 		delete req.session.loggedin;
-		delete req.cookies;
-		res.cookie("user_sid","",{ domain: 'https://enigmatic-garden-66044.herokuapp.com'})
+		//res.cookie("user_sid","",{ domain: 'localhost'})
+		//res.cookie("user_sid","",{ domain: 'https://enigmatic-garden-66044.herokuapp.com'})
 //		console.log('req.session===='+req.session.loggedin)
 		res.redirect('/');
 		
