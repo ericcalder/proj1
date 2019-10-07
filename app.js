@@ -67,8 +67,7 @@ app.use(session({
     //}
     cookie: {
         path: "/",
-        secure: true,
-        //domain: ".herokuapp.com", REMOVE THIS HELPED ME (I dont use a domain anymore)
+        //secure: true,
         httpOnly: true
     }
 }));
