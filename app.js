@@ -64,7 +64,7 @@ app.use(session({
     saveUninitialized: false,
     
     cookie: {
-        path: "https://enigmatic-garden-66044.herokuapp.com/",
+      //  path: "/",
         secure: true,
         httpOnly: true
     }
