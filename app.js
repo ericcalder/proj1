@@ -111,6 +111,7 @@ const logIn=(req,res, next)=>{
 const isLoggedIn=(req, res, next)=>{
 	 console.log('isLoggedIn CALLED '+req.session.loggedin);
     if (!req.session.loggedin) {
+    	console.log('isLoggedIn req.session.loggedin=='+req.session.loggedin)
         res.redirect('/');
     }
     else {
