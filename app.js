@@ -64,7 +64,7 @@ app.use(session({
     saveUninitialized: false,
     
     cookie: {
-        path: "/",
+        path: "https://enigmatic-garden-66044.herokuapp.com/",
         secure: true,
         httpOnly: true
     }
@@ -139,7 +139,7 @@ app.post('/', hashpw, logIn,  function(req, res){
 
 app.get('/logout', function (req, res) {
 		console.log('in logout 0->> req.session.loggedin='+req.session.loggedin)
-		//delete req.session.loggedin;
+		delete req.session.loggedin;
 		
 		res.redirect('/');
 		
