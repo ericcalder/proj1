@@ -60,11 +60,11 @@ app.use(session({
     key: 'user_sid',
     secret: 'somerandonstuffs',
     store: sessionStore,
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     
     cookie: {
-      //  path: "/",
+        path: "/",
         secure: true,
         httpOnly: true
     }
