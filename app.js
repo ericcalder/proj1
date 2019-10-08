@@ -131,7 +131,8 @@ app.post('/', hashpw, logIn,  function(req, res){
 	console.log('in post  '+port)
 	console.log('req.session===='+req.session.loggedin)
 	if(req.session.loggedin){
-		res.render('index',{user:req.session.email})
+		//res.render('index',{user:req.session.email})
+		res.redirect('/index')
 	}
 	else {res.send('not logged in')}
 	//res.send('logged in')
