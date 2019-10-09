@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
       timezone: 'utc'
     });
 }
-console.log('connection='+process.env.JAWSDB_URL)
+//console.log('connection='+process.env.JAWSDB_URL)
 //////////// middleware ///////////////////////////
 var getWeek=(req,res,next)=>{
   console.log('in getWeek')
