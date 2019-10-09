@@ -132,6 +132,7 @@ app.post('/', hashpw, logIn,  function(req, res){
 	console.log('in post  '+port)
 	console.log('req.session===='+req.session.loggedin)
 	if(req.session.loggedin){
+		console.log('conn options='+JSON.stringify(options))
 		//res.render('index',{user:req.session.email})
 		res.redirect('/index')
 	}
