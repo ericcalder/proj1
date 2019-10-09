@@ -55,6 +55,7 @@ var arr=[2,1]
 }
 ////////////////////////////////////////////
 router.get('/', function(req,res){
+  console.log('in router /index ')
 res.render('index',{ user:req.session.email})
 })
 
