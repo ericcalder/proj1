@@ -56,7 +56,7 @@ var options = {
 
 var sessionStore = new MySQLStore(options);
 
-app.enable('trust proxy');
+//app.enable('trust proxy');
 app.use(session({
     key: 'user_sid',
     secret: 'somerandonstuffs',
