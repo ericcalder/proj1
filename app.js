@@ -67,7 +67,7 @@ app.use(session({
     cookie: {
         //path: "/",
         secure: true,
-        httpOnly: true
+        //httpOnly: true
         maxAge: 60000
     }
 }));
