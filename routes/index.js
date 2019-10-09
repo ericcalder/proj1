@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
         user     : 'stairadmin',
       password: process.env.MYSQL_PW,
       database: 'stairadmin',
-      timezone: 'utc'
+      //timezone: 'utc'
     });
 }
 //console.log('connection='+process.env.JAWSDB_URL)
