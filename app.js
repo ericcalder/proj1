@@ -63,12 +63,12 @@ app.use(session({
     store: sessionStore,
     resave: true,
     saveUninitialized: true,
-    proxy : true,
+    //proxy : true,
     cookie: {
         //path: "/",
         secure: true,
         httpOnly: true
-        maxAge: 60000
+        //maxAge: 60000
     }
 }));
 
