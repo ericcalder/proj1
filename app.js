@@ -61,8 +61,8 @@ app.use(session({
     key: 'user_sid',
     secret: 'somerandonstuffs',
     store: sessionStore,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     //proxy : true,
     cookie: {
         //path: "/",
