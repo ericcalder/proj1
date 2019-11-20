@@ -64,12 +64,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     //proxy : true,
-    cookie: {
+    //cookie: {
         //path: "/",
        // secure: true,
-        httpOnly: true
+      //  httpOnly: true
         //maxAge: 60000
-    }
+    //}
 }));
 
 ////// custom middleware //////////
