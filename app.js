@@ -48,6 +48,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 if(process.env.JAWSDB_URL){
+	console.log('JAWSDB_URL')
 var options = mysql.createConnection(process.env.JAWSDB_URL);  
 }
 else {
