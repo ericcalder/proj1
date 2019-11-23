@@ -15,8 +15,8 @@ if (port == null || port == "") {
 }
 
 if(process.env.JAWSDB_URL){
-//var connection =  mysql.createConnection(process.env.JAWSDB_URL);
-
+var connection =  mysql.createConnection(process.env.JAWSDB_URL);
+/*
 var connection=mysql.createConnection({
 	host	: process.env.JAWSDB_HOST,
 	user 	: process.env.JAWSDB_USER,
@@ -24,7 +24,7 @@ var connection=mysql.createConnection({
 	database: process.env.JAWSDB_DB
 	  
 });
-  
+ */ 
 }
 else {
 var connection = mysql.createConnection({
