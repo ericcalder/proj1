@@ -150,6 +150,21 @@ app.get('/', function(req,res){
 res.render('login');
 });
 
+app.get('/api', function(req,res){
+	var qry='SELECT * FROM users ';
+	connection.query(qry, function(error, results, fields) {
+		if(error){console.log('error in connection to JAWSDB_DB')}
+		if (results.length > 0) {
+					req.session.loggedin = true;
+					req.session.authenticated = true;
+					//req.session.email = email;
+				}
+				res.send('results=='+JSON.stringify(results))
+			});
+
+	//res.send('api works !!!')
+})
+
 app.post('/', hashpw, logIn,  function(req, res){
 	console.log('in post  '+port)
 	console.log('req.session===='+req.session.loggedin)
