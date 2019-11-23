@@ -106,6 +106,7 @@ const logIn=(req,res, next)=>{
 	//console.log('params=  '+password+' '+email)
 	var qry='SELECT * FROM users WHERE email = ? AND pwhash = ?';
 	connection.query(qry, [email, pwhash], function(error, results, fields) {
+		if(error){console.log('error in connection to JAWSDB_DB')}
 		if (results.length > 0) {
 					req.session.loggedin = true;
 					req.session.authenticated = true;
