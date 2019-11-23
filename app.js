@@ -54,6 +54,7 @@ if(process.env.JAWSDB_URL){
 	console.log('JAWSDB_URL')
 var options = {
 	host	: process.env.JAWSDB_HOST,
+	port    : process.env.JAWSDB_PORT,
 	user 	: process.env.JAWSDB_USER,
 	password: process.env.JAWSDB_PW,
 	database: process.env.JAWSDB_DB
