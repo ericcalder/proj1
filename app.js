@@ -52,7 +52,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 if(process.env.JAWSDB_URL){
 	console.log('JAWSDB_URL')
-var options = mysql.createConnection(process.env.JAWSDB_URL);  
+var options = {
+	host	: process.env.JAWSDB_HOST,
+	user 	: process.env.JAWSDB_USER,
+	password: process.env.JAWSDB_PW,
+	database: process.env.JAWSDB_DB
+	  
+};
+
+//mysql.createConnection(process.env.JAWSDB_URL);  
 }
 else {
 var options = {
