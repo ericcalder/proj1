@@ -90,7 +90,7 @@ app.use(session({
         //maxAge: 60000
     //}
 }));
-
+/*
 ////// custom middleware //////////
 //// hash password using sha512 algorithm ///
 const hashpw=(req,res,next)=>{
@@ -98,7 +98,7 @@ const hashpw=(req,res,next)=>{
 	var password=req.body.password
 	var salt='123'
 		var sha512 = function(password, salt){
-		    var hash = crypto.createHmac('sha512', salt); /** Hashing algorithm sha512 */
+		    var hash = crypto.createHmac('sha512', salt); // Hashing algorithm sha512 //
 		    hash.update(password);
 		    var value = hash.digest('hex');
 		    return value
@@ -142,7 +142,7 @@ const isLoggedIn=(req, res, next)=>{
 }
 
 ///////////////////////////////////////////
-
+*/
 
 app.get('/', function(req,res){
 	console.log('in root');
@@ -164,7 +164,7 @@ app.get('/api', function(req,res){
 
 	//res.send('api works !!!')
 })
-
+/*
 app.post('/', hashpw, logIn,  function(req, res){
 	console.log('in post  '+port)
 	console.log('req.session===='+req.session.loggedin)
@@ -190,5 +190,5 @@ app.use('/index', index);
 //app.use('/edit', isLoggedIn, edit);
 //app.use('/map', isLoggedIn, map);
 app.use('/cleaners', isLoggedIn, cleaners);
-
+*/
 app.listen(port);
