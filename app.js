@@ -152,6 +152,7 @@ app.get('/api', function(req,res){
 					//req.session.authenticated = true;
 					//req.session.email = email;
 				}
+				res.setHeader('Set-Cookie', 'foo=bar; HttpOnly');
 				res.send('results=='+JSON.stringify(results))
 			});
 
