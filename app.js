@@ -16,15 +16,7 @@ if (port == null || port == "") {
 
 if(process.env.JAWSDB_URL){
 var connection =  mysql.createConnection(process.env.JAWSDB_URL);
-/*
-var connection=mysql.createConnection({
-	host	: process.env.JAWSDB_HOST,
-	user 	: process.env.JAWSDB_USER,
-	password: process.env.JAWSDB_PW,
-	database: process.env.JAWSDB_DB
-	  
-});
- */ 
+
 }
 else {
 var connection = mysql.createConnection({
@@ -72,7 +64,7 @@ var options = {
     database: 'stairadmin'
 };
 }
-
+/*
 var sessionStore = new MySQLStore(options);
 
 //app.enable('trust proxy');
@@ -90,6 +82,7 @@ app.use(session({
         //maxAge: 60000
     //}
 }));
+*/
 /*
 ////// custom middleware //////////
 //// hash password using sha512 algorithm ///
@@ -155,8 +148,8 @@ app.get('/api', function(req,res){
 	connection.query(qry, function(error, results, fields) {
 		if(error){console.log('error in connection to JAWSDB_DB')}
 		if (results.length > 0) {
-					req.session.loggedin = true;
-					req.session.authenticated = true;
+					//req.session.loggedin = true;
+					//req.session.authenticated = true;
 					//req.session.email = email;
 				}
 				res.send('results=='+JSON.stringify(results))
