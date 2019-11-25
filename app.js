@@ -143,6 +143,11 @@ app.get('/', function(req,res){
 res.render('login');
 });
 
+let users = { 
+name : "Ritik", 
+Age : "18"
+} 
+
 app.get('/api', function(req,res){
 	var qry='SELECT * FROM users ';
 	connection.query(qry, function(error, results, fields) {
@@ -153,6 +158,7 @@ app.get('/api', function(req,res){
 					//req.session.email = email;
 				}
 				res.setHeader('Set-Cookie', 'foo=bar; HttpOnly');
+				res.cookie("userData", users);
 				res.send('results=='+JSON.stringify(results))
 			});
 
