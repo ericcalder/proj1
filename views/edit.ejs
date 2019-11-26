@@ -1,0 +1,45 @@
+<head>
+	<% include ../views/partials/head %>
+  <% include ../views/partials/header %>
+  <% include ../views/modals/edit_form %>
+  <% include ../views/modals/add_form %>
+  <link rel='stylesheet' href='/stylesheets/edit.css' />
+
+  <script src="/javascripts/edit.js"></script>
+</head>
+
+<body>
+  <h3>Edit Stair List</h3>
+  <a data-toggle="modal" href="#add_" >Add New Stair</a>
+  <h4>total stairs: <%=rows.length%></h4>
+  
+  <div class="table-responsive">
+    <div class='csv'>
+      <h3></h3>
+        <table class='table'>
+          <thead>
+            <th>Stair</th>
+            <th>Frequency</th>
+            <th>Cleaner</th>
+            <th>NextDue</th>
+          </thead>
+          <tbody>
+            <% for(var k=0;k<locals.rows.length;k++){%>
+              <tr>
+                <td><%=rows[k].stair%></td>
+                <td><%=rows[k].freq_str%></td>
+                <td><%=rows[k].cleaner%></td>
+                <td><%=rows[k].nicedate%></td>
+                <td hidden><%=rows[k].id%></td>
+                <td hidden><%=rows[k].sqldate%></td>
+                <td hidden><%=rows[k].freq%></td>
+                <td hidden><%=rows[k].cleaner_id%></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+     </div>
+  </div>
+	   
+</body>
+

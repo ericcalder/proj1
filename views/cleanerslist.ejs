@@ -1,0 +1,94 @@
+<head>
+    <title></title>
+    
+
+    <% include ../views/partials/head %>
+    <% include ../views/modals/add_cleaner_form %>
+    <link rel='stylesheet' href='/stylesheets/edit.css' />
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    
+  </head>
+  <header>
+    <% include ../views/partials/header %>
+  </header>
+ 
+
+<body>
+  <h3>Cleaners List</h3>
+  <a data-toggle="modal" href="#add_cleaner_" >Add New Cleaner</a>
+  
+  <div class='container'>
+    <table class='table'>
+      <thead>
+        <th>cleaner_id</th>
+        <th>Cleaner</th>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+	   
+</body>
+<script>
+  reload();
+
+   $('#add_cleaner_').on('show.bs.modal', function () {
+  console.log('loaded modal')
+        submitAddCleanerForm();
+        //$('#add_cleaner_').modal('hide');//hide form
+        //alert('jkjhkjhkjk')
+  // do something…
+})
+
+function reload(){
+  $.get('/cleaners/cleanerslist/data', function(data){
+    console.log('in get cleaners/data')
+    console.log('data='+data[0].cleaner)
+    $('.table tbody').empty();
+    for(i=0;i<data.length;i++){
+      $('.table tbody').append('<tr><td>'+data[i].id+'</td>'+
+                                '<td>'+data[i].cleaner+'</td>'+
+                                '<td><button>delete</button></td></tr>');
+                                //'<td><a href="/cleaners/cleanerslist/delete/?id='+data[i].id+'">delete</a></td></tr>')
+    }// for
+  $('.table tbody tr button').on('click', function(){
+    //console.log('button clicked'+$(this).parent().parent().index())
+    //console.log('id='+$(this).parent().parent().find(':eq(0)').text())
+    var cleaner_id=$(this).parent().parent().find(':eq(0)').text();
+    deleteCleaner(cleaner_id)
+  })
+
+  })//get
+  
+}//func
+ 
+  function deleteCleaner(id){
+    console.log('in delete')
+    if(confirm('delete_cleaner??')){
+      $.get('/cleaners/cleanerslist/delete',{id:id},function(data){
+        //console.log('in get delete')
+        //console.log('data=='+data.affectedRows)
+      })// get/delete
+      reload()
+    }//if confirm
+  }
+
+  function submitAddCleanerForm(){
+  $('#target__').submit(function(e){
+          console.log('in submit add form')
+          var arr=$( this ).serializeArray();
+          console.log('serializeArray='+JSON.stringify(arr) );
+          alert('hello')
+          e.preventDefault()
+          $.post('/cleaners/cleanerslist/new',{arr: JSON.stringify(arr)},function(data){
+            console.log('in cleaners/new')
+            console.log('data=='+'  '+JSON.stringify(data))
+          })//post       
+          $('#add_cleaner_').modal('hide');//hide form 
+          reload();
+         //return 
+        });//submit
+  //return
+}
+</script>

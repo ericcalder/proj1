@@ -58,3 +58,23 @@
 <!-- the script below gets the cleaners (id and cleaner) from the cleaners db table
     and creates the cleaners dropdown menu
     -->
+<script>
+    $.get('../cleaners/menu',function(cleaners){
+        console.log('in cleaners')
+        console.log('claener data='+cleaners[0].cleaner+'id='+cleaners[0].id)
+        console.log('data.length='+cleaners.length)
+        $('body').data({cleaners:cleaners}); // save pdata
+       var list=''  //empty string
+        //$('.dropdown-menu a:eq(1)').append(cleaners[0].cleaner)
+        for(k=0;k<cleaners.length;k++){
+        //var val='<a href="../cleaners/'+cleaners[k].id+
+        //'&name='+cleaners[k].cleaner+'">'+cleaners[k].cleaner+'</a>'
+        var val='<a href="../cleaners/'+cleaners[k].id+
+        '">'+cleaners[k].cleaner+'</a>'
+            list=list.concat(val)
+        }
+        console.log('list='+list)
+        $('#navbar ul.nav.navbar-nav li.dropdown div.dropdown-menu').empty().append(list)
+      })
+</script>
+    

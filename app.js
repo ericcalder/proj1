@@ -15,23 +15,21 @@ if (port == null || port == "") {
 }
 
 if(process.env.JAWSDB_URL){
-var connection =  mysql.createConnection(process.env.JAWSDB_URL);
-
-}
+	var connection =  mysql.createConnection(process.env.JAWSDB_URL);
+	}
 else {
 var connection = mysql.createConnection({
         host     : 'localhost',
         user     : 'stairadmin',
       password: process.env.MYSQL_PW,
-      database: 'stairadmin',
-      //timezone: 'utc'
-    });
-}
+      database: 'stairadmin'
+      });
+	}
 
 var app = express();
 
 var index = require('./routes/index');
-//var edit = require('./routes/edit');
+var edit = require('./routes/edit');
 //var map = require('./routes/map');
 var cleaners = require('./routes/cleaners');
 
@@ -42,46 +40,26 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-if(process.env.JAWSDB_URL){
-	console.log('JAWSDB_URL')
-var options = process.env.JAWSDB_URL;
-/*{
-	host	: process.env.JAWSDB_HOST,
-	port    : process.env.JAWSDB_PORT,
-	user 	: process.env.JAWSDB_USER,
-	password: process.env.JAWSDB_PW,
-	database: process.env.JAWSDB_DB
-	  
-};
-*/ 
-}
+if(process.env.JAWSDB_URL){var options = process.env.JAWSDB_URL;}
 else {
-var options = {
-    host: 'localhost',
-    port: 3306,
-    user: 'stairadmin',
-    password: process.env.MYSQL_PW,
-    database: 'stairadmin'
-};
-}
+		var options = {
+		    host: 'localhost',
+		    port: 3306,
+		    user: 'stairadmin',
+		    password: process.env.MYSQL_PW,
+		    database: 'stairadmin'
+			};
+	}
 
 var sessionStore = new MySQLStore(options,connection);
 
-//app.enable('trust proxy');
 app.use(session({
     key: 'user_sid',
     secret: 'somerandonstuffs',
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-    //proxy : true,
-    //cookie: {
-        //path: "/",
-       // secure: true,
-      //  httpOnly: true
-        //maxAge: 60000
-    //}
-}));
+	}));
 
 
 ////// custom middleware //////////
@@ -187,7 +165,7 @@ app.get('/logout', function (req, res) {
 
 app.use('/index', index);
 
-//app.use('/edit', isLoggedIn, edit);
+app.use('/edit', isLoggedIn, edit);
 //app.use('/map', isLoggedIn, map);
 app.use('/cleaners', isLoggedIn, cleaners);
 
