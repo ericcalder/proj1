@@ -153,9 +153,9 @@ app.get('/api', function(req,res){
 	connection.query(qry, function(error, results, fields) {
 		if(error){console.log('error in connection to JAWSDB_DB')}
 		if (results.length > 0) {
-					//req.session.loggedin = true;
-					//req.session.authenticated = true;
-					//req.session.email = email;
+					req.session.loggedin = true;
+					req.session.authenticated = true;
+					req.session.email = email;
 				}
 				res.setHeader('Set-Cookie', 'foo=bar; HttpOnly');
 				res.cookie("userData", users);
