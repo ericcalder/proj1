@@ -155,7 +155,7 @@ app.get('/api', function(req,res){
 		if (results.length > 0) {
 					req.session.loggedin = true;
 					req.session.authenticated = true;
-					req.session.email = email;
+					//req.session.email = email;
 				}
 				res.setHeader('Set-Cookie', 'foo=bar; HttpOnly');
 				res.cookie("userData", users);
