@@ -64,8 +64,8 @@ var options = {
     database: 'stairadmin'
 };
 }
-/*
-var sessionStore = new MySQLStore(options);
+
+var sessionStore = new MySQLStore(options,connection);
 
 //app.enable('trust proxy');
 app.use(session({
@@ -82,7 +82,7 @@ app.use(session({
         //maxAge: 60000
     //}
 }));
-*/
+
 /*
 ////// custom middleware //////////
 //// hash password using sha512 algorithm ///
