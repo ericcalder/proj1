@@ -63,6 +63,7 @@
         console.log('in cleaners')
         console.log('claener data='+cleaners[0].cleaner+'id='+cleaners[0].id)
         console.log('data.length='+cleaners.length)
+        localStorage.setItem('cleaners', JSON.stringify(cleaners));
         $('body').data({cleaners:cleaners}); // save pdata
        var list=''  //empty string
         //$('.dropdown-menu a:eq(1)').append(cleaners[0].cleaner)
@@ -77,4 +78,3 @@
         $('#navbar ul.nav.navbar-nav li.dropdown div.dropdown-menu').empty().append(list)
       })
 </script>
-    

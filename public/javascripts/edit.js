@@ -2,7 +2,12 @@ $( document ).ready(function(){
 
 
   var freq=['weekly', 'A_week', 'B_week', '_3weekly','_4weekly','Monthly'];
-  var clist=$('body').data().cleaners;
+  //var clist=$('body').data().cleaners;
+var clist=JSON.parse(localStorage.getItem('cleaners'));
+  console.log('clist='+clist)
+  console.log('clist length='+clist.length)
+  console.log('clist[0]='+clist[0])
+  console.log('clist[0].id='+clist[0].id)
  ////////////////////////////////////////////////
  ////////////////  add new stait  ///////////////////////////
  $('#add_').on('show.bs.modal', function () {
