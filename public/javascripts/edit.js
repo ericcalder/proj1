@@ -2,12 +2,8 @@ $( document ).ready(function(){
 
 
   var freq=['weekly', 'A_week', 'B_week', '_3weekly','_4weekly','Monthly'];
-  //var clist=$('body').data().cleaners;
-var clist=JSON.parse(localStorage.getItem('cleaners'));
-  console.log('clist='+clist)
-  console.log('clist length='+clist.length)
-  console.log('clist[0]='+clist[0])
-  console.log('clist[0].id='+clist[0].id)
+  var clist=JSON.parse(localStorage.getItem('cleaners'));
+  
  ////////////////////////////////////////////////
  ////////////////  add new stait  ///////////////////////////
  $('#add_').on('show.bs.modal', function () {
@@ -95,11 +91,13 @@ var clist=JSON.parse(localStorage.getItem('cleaners'));
         ////////////////////////////////////////////        
         ///////////////////////////////////////
         //////////////////    add latlng ///////////
+        /*
         $('div.modal-footer button.add_latlng').off().on('click', function(){
           console.log('in add_latlng==='+row)
           add_latlng(row);
 
         })
+        */
         ////////////////////////////////////////////
        submitForm(freq, clist, row);
         //////////////////////////////////////
@@ -109,6 +107,9 @@ var clist=JSON.parse(localStorage.getItem('cleaners'));
        
   }//selectRow
 
+
+
+/*
   function add_latlng(row){
     console.log('in latlng')
     var stair_id=localStorage.getItem('stairId');
@@ -119,7 +120,7 @@ var clist=JSON.parse(localStorage.getItem('cleaners'));
     $('#edit_').modal('hide');//hide form
     return
   }
-
+*/
 
   function delete_stair(row){
     console.log('in test')
@@ -137,7 +138,8 @@ var clist=JSON.parse(localStorage.getItem('cleaners'));
                   
               }
       $('#edit_').modal('hide');//hide form
-      location.reload();/// refresh page
+      refresh()
+      //location.reload();/// refresh page
   }
   
   function submitForm(freq, clist, row){
@@ -156,7 +158,8 @@ var clist=JSON.parse(localStorage.getItem('cleaners'));
           
 
           $('#edit_').modal('hide');//show form
-          location.reload();/// refresh page
+          refresh()
+          //location.reload();/// refresh page
           return
         })//submit
 
@@ -209,6 +212,15 @@ function populateAddForm(freq, clist){
         })
         return
   }
+
+  function refresh(){
+    console.log('in refresh')
+    $.get('/edit',function(data){
+      console.log('in get /edit')
+    })
+    location.reload();/// refresh page
+  }
+
 
   function mySqlToCsv(date){
     if(date){

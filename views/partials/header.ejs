@@ -64,7 +64,8 @@
         console.log('claener data='+cleaners[0].cleaner+'id='+cleaners[0].id)
         console.log('data.length='+cleaners.length)
         localStorage.setItem('cleaners', JSON.stringify(cleaners));
-        $('body').data({cleaners:cleaners}); // save pdata
+        sessionStorage.setItem('cleaners', JSON.stringify(cleaners));
+         // save pdata
        var list=''  //empty string
         //$('.dropdown-menu a:eq(1)').append(cleaners[0].cleaner)
         for(k=0;k<cleaners.length;k++){

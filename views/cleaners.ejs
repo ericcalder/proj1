@@ -66,7 +66,7 @@ div.box{
 <body>
   <h3>Stair List</h3>
   <div class='box'>
-    <button id='show_map'>Map</button>
+    
     <button id='print'>Print</button>
      <% if(!locals.all) { %>
      <a id='link2'><span> Show All</span></a>
@@ -151,30 +151,11 @@ Date.prototype.toShortFormat = function() {
         .append('<h3>Week Ending: '+end_of_week.toShortFormat()+'</h3>')
      $('body div.row div.col-sm-2').append('<h3>'+wk[week_no%2]+'</h3>')
 ////////////////////////////////////////////////
+
+
 var id=<%-id%>;
 console.log('value of id====++'+id)
-  
-$('.box #show_map').on('click',function(){
-  console.log('in show_map')
-  var id=<%-id%>;
-  var r=<%- JSON.stringify(rows)%>
-   //var r1=JSON.parse(r);
-  console.log('id=='+id+' rows===='+r[0].stair+' length==='+r.length)
-  ////// construct markers object //////
-var markers=[]
-for(var i=0;i<r.length;i++){
-      var latlng={}
-      latlng.stair=r[i].stair
-      latlng.lat=r[i].lat
-      latlng.lng=r[i].lng
-      //console.log('latlng==='+JSON.stringify(latlng))
-      markers.push(latlng)
-    }
-//console.log('markers==='+JSON.stringify(markers))
-document.location.href = '/map?markers='+JSON.stringify(markers)
-
-});
-
+ 
 
   $('div.box button#print').on('click', function(e){
     console.log('in print')
